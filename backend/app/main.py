@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes.auth import router as auth_router
 from app.config.database import Base, engine
-import app.models.user  # wichtig: sorgt dafür, dass das Model registriert wird
+import app.models.user  
 
 app = FastAPI(title="AgentFlow API")
 
