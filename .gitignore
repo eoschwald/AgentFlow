@@ -1,13 +1,9 @@
-# Python
-__pycache__/
-*.pyc
-.venv/
-# Env files
-.env
-# Node
-node_modules/
-.next/
-# OS
+backend/venv/
+backend/.env
+backend/__pycache__/
+backend/*.pyc
+
+frontend/node_modules/
+frontend/.next/
+
 .DS_Store
-# Docker
-*.log
