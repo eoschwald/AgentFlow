@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.routes.auth import router as auth_router
 from app.config.database import Base, engine
+import app.models.user  # wichtig: sorgt dafür, dass das Model registriert wird
 
 app = FastAPI(title="AgentFlow API")
 
@@ -14,13 +16,19 @@ app.add_middleware(
 )
 
 
+@app.on_event("startup")
+def on_startup():
+    Base.metadata.create_all(bind=engine)
+
+
 @app.get("/")
 def root():
-    return {"message": "Welcome to AgentFlow"}
+    return {"message": "AgentFlow API is running"}
+
 
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
 
 
-Base.metadata.create_all(bind=engine)
+app.include_router(auth_router)
