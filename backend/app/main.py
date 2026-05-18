@@ -7,6 +7,10 @@ from app.config.database import Base, engine
 import app.models.user
 import app.models.agent
 
+import app.models.user
+import app.models.agent
+import app.models.message
+
 app = FastAPI(title="AgentFlow API")
 
 app.add_middleware(

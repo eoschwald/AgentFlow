@@ -14,3 +14,4 @@ class Agent(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     user = relationship("User", back_populates="agents")
+    messages = relationship("Message", back_populates="agent", cascade="all, delete-orphan")
