@@ -2,8 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes.auth import router as auth_router
+from app.api.routes.agents import router as agents_router
 from app.config.database import Base, engine
-import app.models.user  
+import app.models.user
+import app.models.agent
 
 app = FastAPI(title="AgentFlow API")
 
@@ -32,3 +34,4 @@ def health_check():
 
 
 app.include_router(auth_router)
+app.include_router(agents_router)
